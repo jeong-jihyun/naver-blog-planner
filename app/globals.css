@@ -1,0 +1,53 @@
+:root {
+  --bg: #f6f7f9;
+  --card: #ffffff;
+  --text: #1c1f23;
+  --sub: #6b7280;
+  --line: #e5e7eb;
+  --green: #03c75a;
+  --green-dark: #02a64a;
+  --bad: #dc2626;
+}
+* { box-sizing: border-box; }
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--text);
+  font-family: -apple-system, "Apple SD Gothic Neo", "Malgun Gothic", sans-serif;
+  line-height: 1.5;
+}
+.wrap { max-width: 640px; margin: 0 auto; padding: 32px 16px 64px; }
+h1 { font-size: 24px; margin: 0 0 4px; }
+.desc { color: var(--sub); margin: 0 0 20px; }
+.card {
+  background: var(--card); border: 1px solid var(--line);
+  border-radius: 12px; padding: 20px; margin-bottom: 16px;
+}
+label { display: block; font-weight: 600; margin: 14px 0 6px; font-size: 14px; }
+input[type="text"], input[type="datetime-local"] {
+  width: 100%; padding: 11px 12px; font-size: 16px;
+  border: 1px solid var(--line); border-radius: 8px;
+}
+.checks { display: flex; flex-direction: column; gap: 8px; margin-top: 4px; }
+.checks label { font-weight: 400; margin: 0; display: flex; gap: 8px; align-items: center; }
+button.main {
+  width: 100%; margin-top: 18px; padding: 13px; font-size: 16px; font-weight: 600;
+  color: #fff; background: var(--green); border: 0; border-radius: 8px; cursor: pointer;
+}
+button.main:hover { background: var(--green-dark); }
+button.main:disabled { opacity: .5; cursor: default; }
+a.login {
+  display: block; text-align: center; padding: 13px; font-size: 16px; font-weight: 600;
+  color: #fff; background: var(--green); border-radius: 8px; text-decoration: none;
+}
+button.link { background: none; border: 0; color: var(--sub); cursor: pointer; font-size: 13px; text-decoration: underline; }
+.error {
+  background: #fef2f2; color: var(--bad); border: 1px solid #fecaca;
+  padding: 12px 14px; border-radius: 8px; margin-bottom: 16px; white-space: pre-wrap; font-size: 14px;
+}
+.result { list-style: none; padding: 0; margin: 8px 0 0; }
+.result li { padding: 8px 0; border-bottom: 1px solid var(--line); font-size: 14px; }
+.ok { color: var(--green-dark); font-weight: 600; }
+.ng { color: var(--bad); font-weight: 600; }
+.hint { font-size: 13px; color: var(--sub); margin: 6px 0 0; }
+.top { display: flex; justify-content: space-between; align-items: center; margin-bottom: 8px; }

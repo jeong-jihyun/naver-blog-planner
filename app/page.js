@@ -62,6 +62,14 @@ export default function Home() {
     }
   }
 
+  const [rt, setRt] = useState("");
+  async function showKey() {
+    const r = await fetch("/api/auth/refresh");
+    const j = await r.json();
+    if (j.refreshToken) setRt(j.refreshToken);
+    else setError(j.error || "열쇠를 가져오지 못했습니다.");
+  }
+
   async function logout() {
     await fetch("/api/auth/status", { method: "DELETE" });
     setLoggedIn(false);
@@ -119,6 +127,14 @@ export default function Home() {
           <button className="main" disabled={loading}>
             {loading ? "등록 중..." : "네이버 캘린더에 등록"}
           </button>
+
+          <button type="button" className="link" onClick={showKey}>Claude 연동 열쇠 보기 (로그인 후 10분 안)</button>
+          {rt && (
+            <p className="hint" style={{ wordBreak: "break-all" }}>
+              이 값은 비밀번호와 같습니다. Vercel 환경변수 NAVER_REFRESH_TOKEN 에만 넣고, 다른 곳에는 붙여넣지 마세요.<br />
+              <strong>{rt}</strong>
+            </p>
+          )}
 
           {results && (
             <ul className="result">

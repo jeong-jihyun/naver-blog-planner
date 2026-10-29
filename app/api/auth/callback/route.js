@@ -28,6 +28,15 @@ export async function GET(req) {
       path: "/",
       maxAge: Number(token.expires_in) || 3600,
     });
+    if (token.refresh_token) {
+      res.cookies.set("nb_refresh", token.refresh_token, {
+        httpOnly: true,
+        sameSite: "lax",
+        secure: process.env.NODE_ENV === "production",
+        path: "/",
+        maxAge: 600, // 10분 안에 열쇠를 복사해 가는 용도
+      });
+    }
     res.cookies.delete("nb_state");
     return res;
   } catch (e) {
